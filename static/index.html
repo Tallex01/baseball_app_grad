@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Baseball Wire - Season Finder</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="page-wrap">
+		<header class="masthead">
+			<p class="site-kicker">EST. 1871</p>
+			<h1>BASEBALL WIRE</h1>
+			<p class="site-subtitle">Classic stats and season archives</p>
+		</header>
+
+		<nav class="top-nav" aria-label="Primary">
+			<a href="#" aria-current="page">Home</a>
+			<a href="#">Teams</a>
+			<a href="#">Players</a>
+			<a href="#">History</a>
+		</nav>
+
+		<main class="content">
+			<section class="widget" aria-labelledby="year-title">
+				<h2 id="year-title">Season Year Selector</h2>
+				<p class="subtitle">Choose a year to start exploring baseball history.</p>
+
+				<label for="year-select" class="label">Year</label>
+				<select id="year-select" aria-label="Select baseball year">
+					<option value="">Loading years...</option>
+				</select>
+
+				<p id="status" class="status" aria-live="polite"></p>
+
+				<div class="teams-panel" aria-live="polite">
+					<h3 id="teams-title">Teams</h3>
+					<ul id="teams-list" class="teams-list"></ul>
+				</div>
+			</section>
+		</main>
+	</div>
+
+	<script src="script.js" defer></script>
+</body>
+</html>
