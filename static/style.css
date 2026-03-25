@@ -170,6 +170,37 @@ body {
 	padding: 2px 0;
 }
 
+.league-item {
+	margin-bottom: 8px;
+}
+
+.league-heading {
+	margin: 0;
+	font-weight: bold;
+	color: #102645;
+}
+
+.division-list {
+	margin: 3px 0 0;
+	padding-left: 18px;
+}
+
+.division-item {
+	margin-bottom: 5px;
+}
+
+.division-heading {
+	margin: 0;
+	font-size: 0.88rem;
+	color: #263b62;
+	font-style: italic;
+}
+
+.team-list {
+	margin: 1px 0 0;
+	padding-left: 18px;
+}
+
 @media (max-width: 640px) {
 	.page-wrap {
 		margin: 0;
