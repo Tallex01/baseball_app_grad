@@ -201,6 +201,129 @@ body {
 	padding-left: 18px;
 }
 
+.team-item {
+	margin-bottom: 2px;
+}
+
+.team-button {
+	display: block;
+	width: 100%;
+	text-align: left;
+	padding: 3px 4px;
+	border: 1px solid #b0b7c4;
+	background: linear-gradient(to bottom, #f8f8f2, #e2e2d8);
+	font: inherit;
+	font-size: 0.9rem;
+	color: #102645;
+	cursor: pointer;
+}
+
+.team-button:hover {
+	background: linear-gradient(to bottom, #fff7cf, #e8d79b);
+}
+
+.team-button.selected {
+	background: linear-gradient(to bottom, #f1d48a, #d9b560);
+	border-color: #b18a30;
+}
+
+.players-list {
+	margin: 2px 0 4px;
+	padding-left: 18px;
+	font-size: 0.86rem;
+}
+
+.player-panels {
+	margin-top: 14px;
+	display: flex;
+	gap: 10px;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+
+.player-card {
+	flex: 1 1 260px;
+	background: linear-gradient(to bottom, #f7f7f2, #ecece3);
+	border: 1px solid var(--edge);
+	box-shadow: inset 0 0 0 1px #fff;
+	padding: 10px;
+}
+
+.player-card h3 {
+	margin: 0 0 6px;
+	font-size: 0.95rem;
+	color: #1b2f53;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.player-card-body {
+	font-size: 0.86rem;
+}
+
+.player-card-body.muted {
+	color: #676767;
+	font-style: italic;
+}
+
+.player-card-body dl {
+	margin: 0;
+}
+
+.player-card-body dt {
+	font-weight: bold;
+	margin-top: 4px;
+}
+
+.player-card-body dd {
+	margin: 0 0 2px 0;
+}
+
+.player-button {
+	display: inline-block;
+	padding: 1px 4px;
+	border: 1px solid transparent;
+	background: transparent;
+	font: inherit;
+	font-size: 0.84rem;
+	color: #102645;
+	cursor: pointer;
+	text-align: left;
+}
+
+.player-button:hover {
+	text-decoration: underline;
+	border-color: #c1c7d2;
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.stats-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.8rem;
+	margin-top: 4px;
+}
+
+.stats-table thead {
+	background: #d9dde5;
+}
+
+.stats-table th,
+.stats-table td {
+	border: 1px solid #b7bfd0;
+	padding: 2px 4px;
+	text-align: right;
+}
+
+.stats-table th:first-child,
+.stats-table td:first-child {
+	text-align: left;
+}
+
+.stats-table tbody tr:nth-child(even) {
+	background: #f3f4f8;
+}
+
 @media (max-width: 640px) {
 	.page-wrap {
 		margin: 0;
