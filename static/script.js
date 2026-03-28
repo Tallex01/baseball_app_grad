@@ -285,13 +285,30 @@ function renderPlayerStats(battingRows) {
 	table.appendChild(thead);
 
 	const tbody = document.createElement("tbody");
+	const currentYear = parseInt(selectEl.value || "", 10);
+	let hasInitialSelection = false;
+
 	battingRows.forEach((row) => {
 		const tr = document.createElement("tr");
+		tr.dataset.yearId = row.yearID != null ? String(row.yearID) : "";
+		tr.dataset.teamId = row.teamID || "";
+		const rowYear = row.yearID != null ? Number(row.yearID) : null;
+		if (!hasInitialSelection && Number.isFinite(currentYear) && rowYear === currentYear) {
+			tr.classList.add("stats-row-selected");
+			hasInitialSelection = true;
+		}
 		columns.forEach((col) => {
 			const td = document.createElement("td");
 			const value = row[col.key];
 			td.textContent = value == null ? "" : String(value);
 			tr.appendChild(td);
+		});
+		tr.addEventListener("click", () => {
+			// Clear previous selection within this table
+			Array.from(tbody.querySelectorAll("tr.stats-row-selected")).forEach((r) => {
+				r.classList.remove("stats-row-selected");
+			});
+			tr.classList.add("stats-row-selected");
 		});
 		tbody.appendChild(tr);
 	});
