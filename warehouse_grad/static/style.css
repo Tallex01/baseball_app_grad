@@ -190,6 +190,31 @@ table {
 	transform: translateY(0);
 }
 
+.edit-button {
+	border: 1px solid rgba(14, 116, 144, 0.45);
+	border-radius: 999px;
+	padding: 7px 12px;
+	background: rgba(14, 116, 144, 0.16);
+	color: #9de7ff;
+	font-family: "IBM Plex Mono", monospace;
+	font-size: 0.72rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: background 120ms ease, transform 120ms ease, border-color 120ms ease;
+	margin-right: 8px;
+}
+
+.edit-button:hover {
+	background: rgba(14, 116, 144, 0.3);
+	border-color: rgba(14, 116, 144, 0.75);
+	transform: translateY(-1px);
+}
+
+.edit-button:active {
+	transform: translateY(0);
+}
+
 .metrics-grid {
 	display: grid;
 	grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -224,6 +249,145 @@ table {
 	font-size: clamp(1.8rem, 2vw, 2.4rem);
 	font-weight: 800;
 	letter-spacing: -0.05em;
+}
+
+.form-card {
+	margin-top: 22px;
+	padding: 22px 24px;
+	border-radius: 28px;
+	background: rgba(251, 250, 247, 0.86);
+	border: 1px solid rgba(15, 23, 42, 0.08);
+	box-shadow: var(--shadow);
+	backdrop-filter: blur(10px);
+}
+
+.form-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: end;
+	gap: 16px;
+}
+
+.form-header h3 {
+	margin: 8px 0 0;
+	font-size: 1.35rem;
+	line-height: 1;
+}
+
+.form-status {
+	margin: 0;
+	font-family: "IBM Plex Mono", monospace;
+	font-size: 0.8rem;
+	letter-spacing: 0.04em;
+	color: #4a5a68;
+}
+
+.form-status.error {
+	color: #b91c1c;
+}
+
+.form-status.success {
+	color: #047857;
+}
+
+.item-form {
+	margin-top: 18px;
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 14px;
+	align-items: start;
+}
+
+.field-group {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	font-size: 0.85rem;
+	color: #334050;
+	font-weight: 700;
+}
+
+.field-group input {
+	width: 100%;
+	border: 1px solid rgba(15, 23, 42, 0.15);
+	border-radius: 12px;
+	padding: 10px 12px;
+	background: #ffffff;
+	font-size: 0.95rem;
+	font-weight: 500;
+	outline: none;
+	transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.field-group input:focus {
+	border-color: rgba(249, 115, 22, 0.7);
+	box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.18);
+}
+
+.field-group input.invalid {
+	border-color: #dc2626;
+	box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+}
+
+.field-error {
+	margin: 0;
+	min-height: 1.1em;
+	font-size: 0.75rem;
+	line-height: 1.1;
+	color: #b91c1c;
+	font-family: "IBM Plex Mono", monospace;
+	letter-spacing: 0.02em;
+}
+
+.field-actions {
+	grid-column: span 4;
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 2px;
+}
+
+.add-button {
+	border: 1px solid rgba(15, 23, 42, 0.12);
+	border-radius: 999px;
+	padding: 11px 18px;
+	background: #0f172a;
+	color: #e9eef2;
+	font-family: "IBM Plex Mono", monospace;
+	font-size: 0.8rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: transform 120ms ease, opacity 120ms ease, background 120ms ease;
+}
+
+.add-button:hover {
+	transform: translateY(-1px);
+	background: #101f38;
+}
+
+.add-button:disabled {
+	opacity: 0.6;
+	cursor: wait;
+}
+
+.secondary-button {
+	border: 1px solid rgba(15, 23, 42, 0.18);
+	border-radius: 999px;
+	padding: 11px 18px;
+	background: rgba(255, 255, 255, 0.72);
+	color: #1f2d3a;
+	font-family: "IBM Plex Mono", monospace;
+	font-size: 0.8rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: transform 120ms ease, background 120ms ease;
+	margin-right: 10px;
+}
+
+.secondary-button:hover {
+	transform: translateY(-1px);
+	background: rgba(255, 255, 255, 0.95);
 }
 
 .table-card {
@@ -351,6 +515,14 @@ tbody td:last-child {
 	.metrics-grid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
+
+	.item-form {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.field-actions {
+		grid-column: span 2;
+	}
 }
 
 @media (max-width: 720px) {
@@ -360,13 +532,27 @@ tbody td:last-child {
 	}
 
 	.topbar,
-	.table-header {
+	.table-header,
+	.form-header {
 		align-items: start;
 		flex-direction: column;
 	}
 
 	.metrics-grid {
 		grid-template-columns: 1fr;
+	}
+
+	.item-form {
+		grid-template-columns: 1fr;
+	}
+
+	.field-actions {
+		grid-column: span 1;
+		justify-content: stretch;
+	}
+
+	.add-button {
+		width: 100%;
 	}
 
 	th,

@@ -4,7 +4,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
-from sqlalchemy import Column, DateTime, func
+from sqlalchemy import Column, DateTime, String, func
 from sqlmodel import Field, SQLModel, create_engine
 
 
@@ -17,7 +17,8 @@ class InventoryItem(SQLModel, table=True):
 
 	id: Optional[int] = Field(default=None, primary_key=True)
 	sku: str = Field(index=True, unique=True, nullable=False)
-	item_name: str = Field(nullable=False)
+	# Keep compatibility with existing SQLite schema where the column name is item_name.
+	product: str = Field(sa_column=Column("item_name", String, nullable=False))
 	category: str = Field(nullable=False)
 	quantity_in_stock: int = Field(default=0, nullable=False)
 	unit_price: float = Field(nullable=False)

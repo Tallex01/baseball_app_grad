@@ -13,7 +13,7 @@ This folder contains a simple SQLite database setup for a sports warehouse proje
 
 - `id`: auto-increment item id
 - `sku`: unique product code
-- `item_name`: product name
+- `product`: product name (stored in legacy DB column `item_name`)
 - `category`: sport/category type
 - `quantity_in_stock`: current stock quantity
 - `unit_price`: item price

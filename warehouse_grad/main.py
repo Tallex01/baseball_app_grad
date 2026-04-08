@@ -56,6 +56,36 @@ def create_item(item: InventoryItem):
 		session.refresh(new_item)
 		return new_item
 
+@app.put("/inventory/{id}")
+def modify_item(id: int, item: InventoryItem):
+	if item.quantity_in_stock < 0:
+		raise HTTPException(status_code=400, detail="quantity_in_stock must be 0 or greater")
+
+	if item.unit_price < 0:
+		raise HTTPException(status_code=400, detail="unit_price must be 0 or greater")
+
+	if item.reorder_level < 0:
+		raise HTTPException(status_code=400, detail="reorder_level must be 0 or greater")
+
+	item_data = item.model_dump(exclude={"id", "created_at", "updated_at"})
+
+	with Session(engine) as session:
+		existing_item = session.get(InventoryItem, id)
+		if existing_item is None:
+			raise HTTPException(status_code=404, detail="Inventory item not found")
+
+		for field, value in item_data.items():
+			setattr(existing_item, field, value)
+
+		try:
+			session.add(existing_item)
+			session.commit()
+		except IntegrityError:
+			session.rollback()
+			raise HTTPException(status_code=409, detail="SKU already exists")
+
+		session.refresh(existing_item)
+		return existing_item
 
 
 
