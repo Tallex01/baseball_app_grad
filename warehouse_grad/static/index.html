@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sports Warehouse Admin</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="app-shell">
+		<aside class="sidebar">
+			<div>
+				<p class="eyebrow">Warehouse Control</p>
+				<h1>Sports Inventory</h1>
+				<p class="sidebar-copy">Monitor current stock, pricing, and reorder pressure from a single table.</p>
+			</div>
+
+			<div class="status-panel">
+				<span class="status-dot"></span>
+				<div>
+					<p class="status-label">Database Status</p>
+					<p class="status-value">Live SQLite Feed</p>
+				</div>
+			</div>
+		</aside>
+
+		<main class="main-panel">
+			<header class="topbar">
+				<div>
+					<p class="eyebrow">Inventory Console</p>
+					<h2>Warehouse Snapshot</h2>
+				</div>
+				<button id="refresh-button" class="refresh-button" type="button">Refresh Data</button>
+			</header>
+
+			<section class="metrics-grid" aria-label="Inventory metrics">
+				<article class="metric-card">
+					<p class="metric-label">Total Items</p>
+					<p id="total-items" class="metric-value">--</p>
+				</article>
+				<article class="metric-card">
+					<p class="metric-label">Units In Stock</p>
+					<p id="total-units" class="metric-value">--</p>
+				</article>
+				<article class="metric-card accent-card">
+					<p class="metric-label">Inventory Value</p>
+					<p id="total-value" class="metric-value">--</p>
+				</article>
+				<article class="metric-card warning-card">
+					<p class="metric-label">Low Stock Items</p>
+					<p id="low-stock-count" class="metric-value">--</p>
+				</article>
+			</section>
+
+			<section class="table-card">
+				<div class="table-header">
+					<div>
+						<p class="eyebrow">Records</p>
+						<h3>Inventory Items</h3>
+					</div>
+					<p id="table-status" class="table-status">Loading inventory...</p>
+				</div>
+
+				<div class="table-wrap">
+					<table>
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>SKU</th>
+								<th>Item Name</th>
+								<th>Category</th>
+								<th>Stock</th>
+								<th>Reorder</th>
+								<th>Unit Price</th>
+								<th>Supplier</th>
+								<th>Status</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody id="inventory-body">
+							<tr>
+								<td colspan="10" class="empty-state">Loading inventory data...</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</section>
+		</main>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>
